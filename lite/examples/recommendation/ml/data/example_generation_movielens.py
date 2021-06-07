@@ -114,7 +114,7 @@ def read_data(data_directory):
   """Read movielens ratings.dat and movies.dat file into dataframe."""
   ratings_df = pd.read_csv(
       os.path.join(data_directory, RATINGS_FILE_NAME),
-      sep="::",
+      sep=":",
       names=RATINGS_DATA_COLUMNS)
   ratings_df["Timestamp"] = ratings_df["Timestamp"].apply(int)
   if FLAGS.min_rating is not None:
@@ -375,7 +375,7 @@ def main(_):
   #logging.info("Downloading and extracting data.")
   #extracted_file_dir = download_and_extract_data(data_directory=data_dir)
   logging.info("Reading data to dataframes.")
-  ratings_df, movies_df = read_data(data_directory=extracted_file_dir)
+  ratings_df, movies_df = read_data(data_directory=data_dir)
   logging.info("Generating movie rating user timelines.")
   timelines, movie_counts = convert_to_timelines(ratings_df)
   logging.info("Generating train and test examples.")
